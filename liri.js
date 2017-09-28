@@ -18,24 +18,33 @@ var spotify = new Spotify({
 });
 
 var command = process.argv[2];
-var inquery = process.argv[3]
+var inquery = process.argv[3];
+var searchType;
 
 function lineCommands(){
 	if (command === "my-tweets"){
 
 		findTweets();
+		searchType = "Twitter"
+		logQuery1();
 
 	} else if (command === "spotify-this-song") {
 
 		findSong();
+		searchType = "Song";
+		logQuery2();
 
 	} else if (command === "movie-this") {
 
 		findMovie();
+		searchType = "Movie"
+		logQuery2();
 
 	} else if (command === "do-what-it-says") {
 
 		whatItSays();
+		searchType = "text load";
+		logQuery1();
 
 	}else {
 		console.log("I don't recognize that command");
@@ -72,7 +81,7 @@ function findMovie () {
 	  	console.log("Name: "+parsed.Title+"\nYear: "+parsed.Year+"\nImdb Rating: "+parsed.imdbRating+"\nRotten Tomatoes Rating: "
 	  		+parsed.Metascore+"\nCountry: "+parsed.Country+"\nLanguage: "+parsed.Language+"\nPlot: "+parsed.Plot+"\nActors: "+parsed.Actors);
 	});
-}
+};
 
 function whatItSays () {
 	fs.readFile('random.txt', 'utf8', function(err, data) {
@@ -82,7 +91,19 @@ function whatItSays () {
 		inquery = array[1];
 		lineCommands ();
 	});
-}
+};
+
+function logQuery1 (){
+	time = Date.now();
+	var logTxt = "\nDate: " + time + " ----- Search Type: " + searchType;
+    fs.appendFile("log.txt", logTxt);
+};
+
+function logQuery2 (){
+	time = Date.now();
+	var logTxt = "\nDate: " + time + " ----- Search Type: " + searchType + " ----- Search Term: " + inquery;
+    fs.appendFile("log.txt", logTxt);
+};
 
 lineCommands ();
 
