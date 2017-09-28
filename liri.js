@@ -20,24 +20,49 @@ var spotify = new Spotify({
 var command = process.argv[2];
 var inquery = process.argv[3]
 
+function lineCommands(){
+	if (command === "my-tweets"){
 
-if (command === "my-tweets"){
+		findTweets();
+
+	} else if (command === "spotify-this-song") {
+
+		findSong();
+
+	} else if (command === "movie-this") {
+
+		findMovie();
+
+	} else if (command === "do-what-it-says") {
+
+		whatItSays();
+
+	}else {
+		console.log("I don't recognize that command");
+	};
+};
+
+
+function findTweets(){
 	var params = {screen_name: 'SpaceGrey42'};
 	client.get('statuses/user_timeline', params, function(error, tweets, response) {
 	  if (!error) {
 	    console.log(tweets);
 	  }
 	});
-} else if (command === "spotify-this-song") {
+};
+
+
+function findSong (){
 	spotify.search({ type: 'track', query: inquery}, function(err, data) {
 	  if (err) {
 	    return console.log('Error occurred: ' + err);
 	  };
 		console.log(data); 
 	});
+};
 
-} else if (command === "movie-this") {
-
+function findMovie () {
 	request('http://www.omdbapi.com/?apikey=40e9cece&t='+inquery, function (error, response, body) {
 		if (error){
 	  		console.log('error:', error); // Print the error if one occurred
@@ -47,14 +72,23 @@ if (command === "my-tweets"){
 	  	console.log("Name: "+parsed.Title+"\nYear: "+parsed.Year+"\nImdb Rating: "+parsed.imdbRating+"\nRotten Tomatoes Rating: "
 	  		+parsed.Metascore+"\nCountry: "+parsed.Country+"\nLanguage: "+parsed.Language+"\nPlot: "+parsed.Plot+"\nActors: "+parsed.Actors);
 	});
-
-} else if (command === "do-what-it-says") {
-
-	fs.readFile('random.txt', 'utf8', function(err, data) {
-	  if (err) throw err;
-	  console.log(data);
-	});
-
-}else {
-	console.log("I don't recognize that command");
 }
+
+function whatItSays () {
+	fs.readFile('random.txt', 'utf8', function(err, data) {
+	 	if (err) throw err;
+		var array = fs.readFileSync('random.txt').toString().split(",");
+		command = array[0];
+		inquery = array[1];
+		lineCommands ();
+	});
+}
+
+lineCommands ();
+
+
+
+
+
+
+
