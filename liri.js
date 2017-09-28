@@ -56,8 +56,10 @@ function findTweets(){
 	var params = {screen_name: 'SpaceGrey42'};
 	client.get('statuses/user_timeline', params, function(error, tweets, response) {
 	  if (!error) {
-	    console.log(tweets);
-	  }
+		  for (var i = 0; i<tweets.length; i++){
+		    console.log(tweets[i].text+"\nTweeted at: "+ tweets[i].created_at+"\n-----------------");
+		  };
+	  };
 	});
 };
 
@@ -67,7 +69,8 @@ function findSong (){
 	  if (err) {
 	    return console.log('Error occurred: ' + err);
 	  };
-		console.log(data); 
+		console.log("Artists: "+data.tracks.items[0].artists[0].name+"\nSong Name: "+data.tracks.items[0].name+"\nAlbum: "
+			+data.tracks.items[0].album.name+"\nPreview Link: "+data.tracks.items[0].preview_url);
 	});
 };
 
