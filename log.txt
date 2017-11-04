@@ -1,2 +1,16 @@
 
-Date: 1506620208034 ----- Search Type: Twitter
+
+Date: 1506623987509 ----- Search Type: Twitter
+Date: 1506624116168 ----- Search Type: Twitter
+Date: 1506624139236 ----- Search Type: Movie ----- Search Term: the martian
+Date: 1509835894982 ----- Search Type: Twitter
+Date: 1509835974249 ----- Search Type: Song ----- Search Term: I need a hero
+Date: 1509836020927 ----- Search Type: Movie ----- Search Term: home alone
+Date: 1509836301894 ----- Search Type: Movie ----- Search Term: The Martian
+Date: 1509836541190 ----- Search Type: Song ----- Search Term: hey jude
+Date: 1509836563888 ----- Search Type: Song ----- Search Term: i want to hold your hand
+Date: 1509836598415 ----- Search Type: Song ----- Search Term: johnny b goode
+Date: 1509836607540 ----- Search Type: Song ----- Search Term: johnny b goode
+Date: 1509836694522 ----- Search Type: Twitter
+Date: 1509836896276 ----- Search Type: text load
+Date: 1509836896286 ----- Search Type: Song ----- Search Term: "I Want it That Way"

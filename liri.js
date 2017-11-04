@@ -5,12 +5,7 @@ var request = require('request');
 var fs = require('fs');
 
 
-var client = new Twitter ({
-  consumer_key: twitterKeys.consumer_key,
-  consumer_secret: twitterKeys.consumer_secret,
-  access_token_key: twitterKeys.access_token_key,
-  access_token_secret: twitterKeys.access_token_secret,
-});
+var client = new Twitter (twitterKeys);
 
 var spotify = new Spotify({
   id: '13fe18c2e3ea4bdaadae282063cc1d96',
